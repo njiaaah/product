@@ -1,0 +1,70 @@
+body {
+    background-color: #333333;
+    color: white;
+    font-size: 1.2vw;
+    margin: 0;
+    font-family: 'roboto';
+}
+
+.product-table {
+    margin: auto;
+    width:  80vw;
+    background-color: rgb(162, 43, 43);
+}
+
+
+
+.product-table-item,
+.product-table-head {
+    display: grid;
+    grid-template-columns: 20vw repeat(6, 10vw);
+}
+
+.product-table-head div,
+.product-table-item div {
+    margin: auto;
+    margin-left: 0;
+    padding: 1em;
+}
+
+.product-table-head div {
+    white-space: nowrap;
+    height: 2em;
+    display: grid;
+    line-height: 0;
+}
+
+.product-table-head div:nth-child(n+2),
+.product-table-item div:nth-child(n+2) {
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 50em) {
+    body {
+        background-color: rgb(39, 18, 18);
+    }
+}
+
