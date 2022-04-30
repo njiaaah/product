@@ -10,12 +10,12 @@ let list = {
     },
 
     КуринаяГрудка : {
-        'name'   :'Куриная Грудка',
+        'name'   :'Куриная грудка',
         'gindex' :'50',
         'calo'   :'22',
         'carb'   :'32',
         'prot'   :'35',
-        'fat'    :'42342342',
+        'fat'    :'342',
         'vita'   :'52'
     },
 
@@ -37,6 +37,16 @@ let list = {
         'prot'   :'35',
         'fat'    :'1',
         'vita'   :'54'
+    },
+
+    Творог : {
+        'name'   :'Творог',
+        'gindex' :'1',
+        'calo'   :'100',
+        'carb'   :'0',
+        'prot'   :'25',
+        'fat'    :'25',
+        'vita'   :'1'
     }
 }
 
@@ -83,11 +93,19 @@ function rebuildTable () {
         
 }
 
-rebuildTable ()
+
 
 function sort(parameter) {
     let newArray = []
-    document.getElementById(parameter).setAttribute('onclick','reSort("' + parameter + '")');
+// сброс кнопок сортировки
+    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    for (let r = 0; r < resetArray.length;){
+        let sortReset = resetArray[0]
+        document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
+        resetArray.shift()   
+    }
+//сортировка    
+    document.getElementById(parameter).setAttribute("onclick","reSort('" + parameter + "')")
     for (let i = 0; i < Object.keys(list).length; i++) {
         newArray.push(list[Object.keys(list)[i]][parameter])    
     }
@@ -105,8 +123,16 @@ function sort(parameter) {
 }
 
 function reSort(parameter) {
-    document.getElementById(parameter).setAttribute("onclick","sort('" + parameter + "')");
+
     let newArray = []
+    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    for (let r = 0; r < resetArray.length;){
+        let sortReset = resetArray[0]
+        document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
+        resetArray.shift()   
+    }
+
+    document.getElementById(parameter).setAttribute("onclick","sort('" + parameter + "')");
     for (let i = 0; i < Object.keys(list).length; i++) {
 
         newArray.push(list[Object.keys(list)[i]][parameter])    
@@ -116,12 +142,29 @@ function reSort(parameter) {
     for (let i = 0; i = newArray.length; i++){
         let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[newArray.length - 1] + '"]')
         for (let qry = 0; qry < importantVar.length; qry++){           
-            importantVar[qry].style.display = 'none'
+            importantVar[qry].style.display = 'none'    
             document.getElementById('product-table-container').appendChild(importantVar[qry])
             importantVar[qry].style.display = 'grid'
+            
         }        
         newArray.pop()
-        console.log(newArray)
     }
 }
+
+
     
+
+//   async function f() {
+
+//     let promise = new Promise((resolve) => {
+//       setTimeout(() => resolve("готово!"), 1000)
+//     });
+  
+//     let result = await promise;
+  
+ 
+//   }
+  
+//   f();
+
+rebuildTable ();

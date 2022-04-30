@@ -1,42 +1,140 @@
+:root {
+    --main-color: rgb(70, 70, 70);
+}
+
+
 body {
-    background-color: #333333;
-    color: white;
-    font-size: 1.2vw;
+    background-color: rgb(237, 237, 237);
+    color: var(--main-color);
     margin: 0;
-    font-family: 'roboto';
+    font-family: 'roboto';    
+    display: grid;
+    place-items: center;
+}
+
+p, h3, button,div {
+    background: none; 
+    border: 0;
+    font-size: max(20px,1vw);
+    font-weight: 400;
+    color: var(--main-color);
+}
+
+h1 {
+    font-family: 'Press Start 2P';
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 12%,
+        rgba(208, 222, 33, 1) 24%,
+        rgba(79, 220, 74, 1) 36%,
+        rgba(63, 218, 216, 1) 48%,
+        rgba(47, 201, 226, 1) 60%,
+        rgba(28, 127, 238, 1) 72%,
+        rgba(95, 21, 242, 1) 84%,
+        rgba(186, 12, 248, 1) 100%
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+    padding: 1vw;
 }
 
 .product-table {
     margin: auto;
-    width:  80vw;
-    background-color: rgb(162, 43, 43);
+    width:  min(90%,1100px);
+    background-color: rgb(240, 240, 240);
+    border-radius: 1vw;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);    
 }
-
-
 
 .product-table-item,
 .product-table-head {
     display: grid;
-    grid-template-columns: 20vw repeat(6, 10vw);
+    grid-template-columns: 30% repeat(6, 1fr);
 }
 
 .product-table-head div,
-.product-table-item div {
-    margin: auto;
-    margin-left: 0;
-    padding: 1em;
+.product-table-item div,
+.product-table-container div {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    user-select: none;
+}
+
+/* fancy stuff */
+
+.product-table-head div:nth-child(n+2) {
+    cursor: pointer;
+    text-decoration:underline rgba(193, 193, 193, 0.307);   
+}
+
+.product-table-head div:nth-child(2):hover {
+    background-color: #f55457;
+}
+
+.product-table-head div:nth-child(3):hover {
+    background-color: #f5863c;  
+}
+
+.product-table-head div:nth-child(4):hover {
+    background-color: #e3bf2d; 
+}
+
+.product-table-head div:nth-child(5):hover {
+    background-color: #4ce558;
+}
+
+.product-table-head div:nth-child(6):hover {
+    background-color: #49b6ff;
+}
+
+.product-table-head div:nth-child(7):hover {    
+    background-color: #ad81ff; 
+    border-top-right-radius: 1vw;    
+}
+
+.product-table-head div:nth-child(n+2):hover {
+    text-decoration: none;
+    color: aliceblue;
+    transition: all 250ms ease; 
+    font-size: 1em;
+    box-shadow: 0px 3px 16px 5px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.product-table-container > div:nth-child(2n+1){
+    background-color: rgba(54, 115, 94, 0.03);
+}
+
+.product-table-head {
+    background-color: #333333;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
+    height: 6vh;
 }
 
 .product-table-head div {
-    white-space: nowrap;
-    height: 2em;
-    display: grid;
-    line-height: 0;
+    color: rgb(169, 171, 173);
 }
 
-.product-table-head div:nth-child(n+2),
-.product-table-item div:nth-child(n+2) {
-    margin: auto;
+.product-table-container > div:hover{
+    background-color: rgb(221, 221, 221);
+    color: white;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
+    transition: all 150ms ease;
+}
+
+
+.slideOut {
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+}
+
+.slideIn {
+    opacity: 1;
+    transition: all 250ms ease-in-out;
 }
 
 
@@ -60,11 +158,24 @@ body {
 
 
 
-
-
-@media (max-width: 50em) {
-    body {
-        background-color: rgb(39, 18, 18);
+@media (max-width: 55em) {
+    h1 {
+        width: 100%;
+        font-family: 'Press Start 2P';
+        background-image: linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 1) 0%,
+            rgba(255, 154, 0, 1) 12%,
+            rgba(208, 222, 33, 1) 24%,
+            rgba(79, 220, 74, 1) 36%,
+            rgba(63, 218, 216, 1) 48%,
+            rgba(47, 201, 226, 1) 60%,
+            rgba(28, 127, 238, 1) 72%,
+            rgba(95, 21, 242, 1) 84%,
+            rgba(186, 12, 248, 1) 100%
+        );
+        -webkit-background-clip: text;
+        color: transparent;
     }
 }
 
