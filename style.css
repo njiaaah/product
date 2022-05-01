@@ -39,6 +39,17 @@ h1 {
     padding: 1vw;
 }
 
+body input {
+    display: block;
+    margin: 2em;
+    padding: .5em 5em .5em 1em;
+    border: 2px solid grey;
+    border-radius: 15vw;
+    color: grey;
+    text-align: left;
+    font-size: 1.2vw;
+}
+
 .product-table {
     margin: auto;
     width:  min(90%,1100px);
@@ -50,7 +61,7 @@ h1 {
 .product-table-item,
 .product-table-head {
     display: grid;
-    grid-template-columns: 30% repeat(6, 1fr);
+    grid-template-columns: 30% repeat(5, 1fr);
 }
 
 .product-table-head div,
@@ -60,6 +71,15 @@ h1 {
     display: grid;
     place-items: center;
     user-select: none;
+}
+
+.product-table-container > div > div:nth-child(1){
+    display: inline;
+}
+
+.product-table-container > div > div:nth-child(1) h3{
+    margin-left: 1em;
+    white-space: nowrap;
 }
 
 /* fancy stuff */
@@ -74,19 +94,53 @@ h1 {
 }
 
 .product-table-head div:nth-child(3):hover {
-    background-color: #f5863c;  
+    background-color: #f5863c;
+    padding-bottom: 0.5vw;  
+}
+
+.product-table-head div:nth-child(3):hover::after {
+    content: 'ККал на 100г';
+    font-size: 1.2vh;
+    position: absolute;
+    margin-top: 35px;
+    opacity: 0.65;
 }
 
 .product-table-head div:nth-child(4):hover {
-    background-color: #e3bf2d; 
+    background-color: #e3bf2d;
+    padding-bottom: 0.5vw; 
+}
+
+.product-table-head div:nth-child(4):hover::after {
+    content: 'г на 100г';
+    font-size: 1.2vh;
+    position: absolute;
+    margin-top: 35px;
+    opacity: 0.65;
 }
 
 .product-table-head div:nth-child(5):hover {
     background-color: #4ce558;
 }
 
+.product-table-head div:nth-child(5):hover::after {
+    content: 'г на 100г';
+    font-size: 1.2vh;
+    position: absolute;
+    margin-top: 35px;
+    opacity: 0.65;
+}
+
 .product-table-head div:nth-child(6):hover {
     background-color: #49b6ff;
+}
+
+.product-table-head div:nth-child(6):hover::after {
+    content: 'г на 100г';
+    font-size: 1.2vh;
+    position: absolute;
+    margin-top: 35px;
+    opacity: 0.65;
 }
 
 .product-table-head div:nth-child(7):hover {    
@@ -137,6 +191,33 @@ h1 {
     transition: all 250ms ease-in-out;
 }
 
+
+/* подкраска ги */
+
+.lowGi > div:nth-child(2){
+    background-color: #36fd46b8;
+}
+
+.mediumGi > div:nth-child(2){
+    background-color: #ff8c2e8d;
+}
+
+.highGi > div:nth-child(2){
+    background-color: #ff330079;
+}
+
+.neutralGi > div:nth-child(2){
+    background: none;
+}
+
+.product-table-container > div >div:nth-child(7),
+.product-table-head > div:nth-child(7){
+    display: none;
+}
+
+/* спрятал витамины до лучших времен */
+
+.
 
 
 

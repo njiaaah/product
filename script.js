@@ -1,56 +1,3 @@
-let list = {
-    Банан : {
-        'name'   :'Банан',
-        'gindex' :'9000',
-        'calo'   :'20',
-        'carb'   :'30',
-        'prot'   :'35',
-        'fat'    :'0',
-        'vita'   :'50'
-    },
-
-    КуринаяГрудка : {
-        'name'   :'Куриная грудка',
-        'gindex' :'50',
-        'calo'   :'22',
-        'carb'   :'32',
-        'prot'   :'35',
-        'fat'    :'342',
-        'vita'   :'52'
-    },
-
-    Гречка : {
-        'name'   :'Греча',
-        'gindex' :'300',
-        'calo'   :'22',
-        'carb'   :'32',
-        'prot'   :'35',
-        'fat'    :'142',
-        'vita'   :'52'
-    },
-
-    Макароны : {
-        'name'   :'Макароны',
-        'gindex' :'0',
-        'calo'   :'24',
-        'carb'   :'34',
-        'prot'   :'35',
-        'fat'    :'1',
-        'vita'   :'54'
-    },
-
-    Творог : {
-        'name'   :'Творог',
-        'gindex' :'1',
-        'calo'   :'100',
-        'carb'   :'0',
-        'prot'   :'25',
-        'fat'    :'25',
-        'vita'   :'1'
-    }
-}
-
-
 function rebuildTable () {
     document.getElementById('product-table-container').innerHTML = ''
     for (let i = 0; i < Object.keys(list).length; i++) {
@@ -68,6 +15,7 @@ function rebuildTable () {
         let fat = list[Object.keys(list)[i]].fat
         let vita = list[Object.keys(list)[i]].vita
 
+        document.getElementById('item' + id).dataset.name = name.toLowerCase()
         document.getElementById('item' + id).dataset.gindex = gindex
         document.getElementById('item' + id).dataset.calo = calo
         document.getElementById('item' + id).dataset.carb = carb
@@ -81,8 +29,9 @@ function rebuildTable () {
                 itemValue = productProperties[x]
                 
                 let div = document.createElement('div')
-                div.className = 'product-' + itemValue
+                div.className = 'product-' + itemValue 
                 if (toString.itemValue = 'name') {
+                    itemValue = itemValue
                     div.innerHTML = '<h3>' + itemValue + '</h3>'
                 } else {
                     div.innerHTML = '<p>' + itemValue + '</p>' 
@@ -97,14 +46,18 @@ function rebuildTable () {
 
 function sort(parameter) {
     let newArray = []
+
 // сброс кнопок сортировки
+
     let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
         resetArray.shift()   
     }
-//сортировка    
+    
+//сортировка  
+
     document.getElementById(parameter).setAttribute("onclick","reSort('" + parameter + "')")
     for (let i = 0; i < Object.keys(list).length; i++) {
         newArray.push(list[Object.keys(list)[i]][parameter])    
@@ -112,11 +65,14 @@ function sort(parameter) {
         newArray.sort(function(a, b) { return a - b } )
        
     for (let i = 0; i = newArray.length; i++){
-        let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[0] + '"]')
+        let importantVar
+        importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[0] + '"]')
         for (let qry = 0; qry < importantVar.length; qry++){           
             importantVar[qry].style.display = 'none'
             document.getElementById('product-table-container').appendChild(importantVar[qry])
             importantVar[qry].style.display = 'grid'
+
+             
         }        
         newArray.shift()
     }
@@ -131,10 +87,10 @@ function reSort(parameter) {
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
         resetArray.shift()   
     }
-
     document.getElementById(parameter).setAttribute("onclick","sort('" + parameter + "')");
-    for (let i = 0; i < Object.keys(list).length; i++) {
 
+
+    for (let i = 0; i < Object.keys(list).length; i++) {
         newArray.push(list[Object.keys(list)[i]][parameter])    
     }
         newArray.sort(function(a, b) { return a - b } )
@@ -144,27 +100,60 @@ function reSort(parameter) {
         for (let qry = 0; qry < importantVar.length; qry++){           
             importantVar[qry].style.display = 'none'    
             document.getElementById('product-table-container').appendChild(importantVar[qry])
-            importantVar[qry].style.display = 'grid'
-            
+            importantVar[qry].style.display = 'grid'            
         }        
         newArray.pop()
     }
 }
 
+document.addEventListener("DOMContentLoaded", function(event){
 
+rebuildTable ()
+
+// поиск по тексту
+
+let searchArray = []
+let input = document.getElementById('search-bar')
+input.addEventListener('input', updateValue)
+
+function updateValue(e) {
+    let searchStr = e.target.value.toLowerCase() 
+    searchArray = []  
+    let qi = [document.querySelectorAll('[data-name]').length]
+
+
+        let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-name]')
+        for (let qry = 0; qry < importantVar.length; qry++){           
+            importantVar[qry].style.display = 'none'              
+        }   
+
+        for (let i = 0 ; i < qi ; i++ ){
+            if ( (document.querySelectorAll('[data-name]')[i].dataset.name.includes(searchStr))) {
+                searchArray.push(document.querySelectorAll('[data-name]')[i].id)
+            }
+
+            for (let i = 0 ; i< searchArray.length; i++) {
+                document.getElementById(searchArray[i]).style.display = 'grid'
+            }
+                    
+    
+    
+        
+    }
+    // for(let i = 0; i < searchArray ; i++) {
+        // document.querySelectorAll('[data-name]')[i].dataset.name
+    // }
+    // for (let i = 0; i < searchArray.length ; i++){
+    //     console.log(searchArray)
+// }
+
+
+
+
+
+}      
     
 
-//   async function f() {
 
-//     let promise = new Promise((resolve) => {
-//       setTimeout(() => resolve("готово!"), 1000)
-//     });
-  
-//     let result = await promise;
-  
- 
-//   }
-  
-//   f();
+});
 
-rebuildTable ();
