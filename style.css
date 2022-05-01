@@ -432,6 +432,7 @@ body #search-bar::placeholder {
     .product-table-container > div > div:nth-child(1) h3{
         text-align: left;
         width: 35vw;
+        white-space: nowrap;
         text-overflow: ellipsis;
         overflow: auto;
         overflow-x: hidden;
