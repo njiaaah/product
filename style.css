@@ -2,6 +2,8 @@
     --main-color: rgb(70, 70, 70);
 }
 
+@media (min-width: 55.01em) {
+}
 
 body {
     background-color: rgb(237, 237, 237);
@@ -39,15 +41,21 @@ h1 {
     padding: 1vw;
 }
 
-body input {
+body #search-bar {
     display: block;
-    margin: 2em;
-    padding: .5em 5em .5em 1em;
-    border: 2px solid grey;
+    margin: 3em;
+    padding: .6em 6em .5em 2em;
+    border: 1px solid rgb(211, 210, 210);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
     border-radius: 15vw;
     color: grey;
     text-align: left;
-    font-size: 1.2vw;
+    font-size: 1.4vw;
+}
+
+#search-bar:focus {
+    outline: 1px solid rgb(181, 181, 181);
+    transition: all 250ms ease;
 }
 
 .product-table {
@@ -133,6 +141,7 @@ body input {
 
 .product-table-head div:nth-child(6):hover {
     background-color: #49b6ff;
+    border-top-right-radius: 1vw;   
 }
 
 .product-table-head div:nth-child(6):hover::after {
@@ -141,6 +150,7 @@ body input {
     position: absolute;
     margin-top: 35px;
     opacity: 0.65;
+    
 }
 
 .product-table-head div:nth-child(7):hover {    
@@ -194,6 +204,55 @@ body input {
 
 /* подкраска ги */
 
+#gi-highlight {
+    display: grid;
+    white-space: nowrap;
+    height: 3vw;
+    place-items: center;
+    grid-template-columns: 1vw 7.5vw;
+    background: none;
+    opacity: 0.5;
+    border-radius: 1vw;
+    padding: 0 2vw 0 2vw;
+    margin-bottom: 2vh;
+    user-select: none;
+    
+}
+
+#gi-highlight p {
+    background: none;
+    font-size: 1vw;
+    cursor: pointer;
+
+    text-decoration: underline 1px rgba(128, 128, 128, 0.361);
+
+}
+
+#gi-highlight img {
+    cursor: pointer;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+#gi-highlight:hover {
+  opacity: 1;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
+  transition: all 250ms ease;
+}
+
+.giHighlightActive {
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    transition: all 250ms ease;
+    color: rgb(119,249,42);
+    color: linear-gradient(90deg, rgba(119,249,42,1) 11%, rgba(255,190,49,1) 35%, rgba(255,190,49,1) 65%, rgba(255,30,30,1) 94%, rgba(255,30,30,1) 100%);
+}
+
+.giHighlightActive:hover {
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0); 
+    transition: all 250ms ease;
+}
+
 .lowGi > div:nth-child(2){
     background-color: #36fd46b8;
 }
@@ -215,34 +274,34 @@ body input {
     display: none;
 }
 
-/* спрятал витамины до лучших времен */
-
-.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* МОБИЛКА */
 
 
 @media (max-width: 55em) {
-    h1 {
+    body {
+        background-color: rgb(237, 237, 237);
+        color: var(--main-color);
+        margin: 0;
         width: 100%;
+        font-family: 'roboto';    
+        text-align: center;
+
+    }
+    
+    p, h3, button,div {
+        background: none; 
+        border: 0;
+        font-size: 2.5vw;
+        font-weight: 400;
+        color: var(--main-color);
+        
+    }
+    
+    h1 {
         font-family: 'Press Start 2P';
+        display: inline-block;
         background-image: linear-gradient(
             90deg,
             rgba(255, 0, 0, 1) 0%,
@@ -257,6 +316,244 @@ body input {
         );
         -webkit-background-clip: text;
         color: transparent;
+        font-size: 10vw;
+
+    }
+    
+    body #search-bar {
+        display: block;
+        padding: .6em 6.2em .5em 4.2em;
+        border: 1px solid rgb(211, 210, 210);
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
+        border-radius: 1vw;
+        color: grey;
+        text-align: left;
+        font-size: 4vw;
+        margin: 0;
+        margin-bottom: 1em;
+    }
+    
+    #search-bar:focus {
+        outline: 1px solid rgb(181, 181, 181);
+        transition: all 250ms ease;
+    }
+    
+    .product-table {
+
+        width:  100%;
+        background-color: rgb(240, 240, 240);
+        border-radius: 1vw;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);    
+    }
+    
+    .product-table-item,
+    .product-table-head {
+        display: grid;
+        grid-template-columns: 3fr 1fr repeat(4, 1fr);
+    }
+    
+    .product-table-head div,
+    .product-table-item div,
+    .product-table-container div {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        user-select: none;
+        text-overflow: ellipsis;
+    }
+    
+    .product-table-container > div > div:nth-child(1){
+        display: inline;
+    }
+    
+    .product-table-container > div > div:nth-child(1) h3{
+        text-align: left;
+        white-space: nowrap;
+    }
+    
+    /* fancy stuff */
+    
+    .product-table-head div:nth-child(n+2) {
+        cursor: pointer;
+        text-decoration:underline rgba(193, 193, 193, 0.307);   
+    }
+    
+    .product-table-head div:nth-child(2):hover {
+        background-color: #f55457;
+    }
+    
+    .product-table-head div:nth-child(3):hover {
+        background-color: #f5863c;
+        padding-bottom: 0.5vw;  
+    }
+    
+    .product-table-head div:nth-child(3):hover::after {
+        content: 'ККал на 100г';
+        white-space: nowrap;
+        font-size: .75vh;
+        position: absolute;
+        margin-top: 35px;
+        opacity: 0.65;
+    }
+    
+    .product-table-head div:nth-child(4):hover {
+        background-color: #e3bf2d;
+        padding-bottom: 0.5vw; 
+    }
+    
+    .product-table-head div:nth-child(4):hover::after {
+        content: 'г на 100г';
+        font-size: 1vh;
+        position: absolute;
+        margin-top: 35px;
+        opacity: 0.65;
+    }
+    
+    .product-table-head div:nth-child(5):hover {
+        background-color: #4ce558;
+    }
+    
+    .product-table-head div:nth-child(5):hover::after {
+        content: 'г на 100г';
+        font-size: 1vh;
+        position: absolute;
+        margin-top: 35px;
+        opacity: 0.65;
+    }
+    
+    .product-table-head div:nth-child(6):hover {
+        background-color: #49b6ff;
+        border-top-right-radius: 1vw;   
+    }
+    
+    .product-table-head div:nth-child(6):hover::after {
+        content: 'г на 100г';
+        font-size: 1vh;
+        position: absolute;
+        margin-top: 35px;
+        opacity: 0.65;
+        
+    }
+    
+    .product-table-head div:nth-child(7):hover {    
+        background-color: #ad81ff; 
+        border-top-right-radius: 1vw;    
+    }
+    
+    .product-table-head div:nth-child(n+2):hover {
+        text-decoration: none;
+        color: aliceblue;
+        transition: all 250ms ease; 
+        font-size: 1em;
+        box-shadow: 0px 3px 16px 5px rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
+    }
+    
+    .product-table-container > div:nth-child(2n+1){
+        background-color: rgba(54, 115, 94, 0.03);
+    }
+    
+    .product-table-head {
+        background-color: #333333;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
+        height: 6vh;
+    }
+    
+    .product-table-head div {
+        color: rgb(169, 171, 173);
+    }
+    
+    .product-table-container > div:hover{
+        background-color: rgb(221, 221, 221);
+        color: white;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
+        transition: all 150ms ease;
+    }
+    
+    
+    .slideOut {
+        opacity: 0;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .slideIn {
+        opacity: 1;
+        transition: all 250ms ease-in-out;
+    }
+    
+    
+    /* подкраска ги */
+    
+    #gi-highlight {
+        transform: scale(2.5);
+        display: grid;
+        white-space: nowrap;
+        height: 3vw;
+        place-items: center;
+        grid-template-columns: 1vw 7.5vw;
+        background: none;
+        opacity: 0.5;
+        border-radius: 1vw;
+        padding: 0 2vw 0 2vw;
+        margin-bottom: 2vh;
+        user-select: none;
+        
+    }
+    
+    #gi-highlight p {
+        background: none;
+        font-size: 1vw;
+        cursor: pointer;   
+    }
+    
+    #gi-highlight img {
+        cursor: pointer;
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+    
+    #gi-highlight:hover {
+      opacity: 1;
+      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
+      transition: all 250ms ease;
+    }
+    
+    .giHighlightActive {
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+        transition: all 250ms ease;
+        color: rgb(119,249,42);
+        color: linear-gradient(90deg, rgba(119,249,42,1) 11%, rgba(255,190,49,1) 35%, rgba(255,190,49,1) 65%, rgba(255,30,30,1) 94%, rgba(255,30,30,1) 100%);
+    }
+        
+    .giHighlightActive:hover {
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0); 
+        transition: all 250ms ease;
+    }
+    
+    
+    
+    .lowGi > div:nth-child(2){
+        background-color: #36fd46b8;
+    }
+    
+    .mediumGi > div:nth-child(2){
+        background-color: #ff8c2e8d;
+    }
+    
+    .highGi > div:nth-child(2){
+        background-color: #ff330079;
+    }
+    
+    .neutralGi > div:nth-child(2){
+        background: none;
+    }
+    
+    .product-table-container > div >div:nth-child(7),
+    .product-table-head > div:nth-child(7){
+        display: none;
     }
 }
 

@@ -41,7 +41,33 @@ function rebuildTable () {
     }
         
 }
+let isGiColored = false
 
+function colorGi() {
+    if (!isGiColored) {
+            for (let i = 0; i < Object.keys(list).length; i++) {
+                let cDiv = document.getElementById('item' + i )
+                if (cDiv.dataset.gindex <= 55) {
+                    cDiv.classList.add("lowGi")
+                } else if (cDiv.dataset.gindex > 55 && cDiv.dataset.gindex <= 70) {
+                    cDiv.classList.add("mediumGi") 
+                } else cDiv.classList.add("highGi")
+            }
+            isGiColored = true
+            document.getElementById('gi-highlight').classList.add("giHighlightActive")
+        } else {
+            for (let i = 0; i < Object.keys(list).length; i++) {
+                let cDiv = document.getElementById('item' + i )
+                cDiv.classList.remove("lowGi")
+                cDiv.classList.remove("mediumGi")
+                cDiv.classList.remove("highGi")                
+            }
+            isGiColored = false
+            document.getElementById('gi-highlight').classList.remove("giHighlightActive")
+        }
+
+        
+    }
 
 
 function sort(parameter) {
@@ -153,6 +179,8 @@ function updateValue(e) {
 
 }      
     
+// подцветка ГИ
+
 
 
 });
