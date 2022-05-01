@@ -2,17 +2,27 @@
     --main-color: rgb(70, 70, 70);
 }
 
+::-webkit-scrollbar {
+    display: none;
+    overflow: hidden;
+    }
+
 @media (min-width: 55.01em) {
-}
+
 
 body {
+    overflow-x: hidden;
     background-color: rgb(237, 237, 237);
     color: var(--main-color);
     margin: 0;
     font-family: 'roboto';    
     display: grid;
     place-items: center;
+    gap: 2vh;
+ 
 }
+
+
 
 p, h3, button,div {
     background: none; 
@@ -41,21 +51,43 @@ h1 {
     padding: 1vw;
 }
 
+.search-container {
+    
+    display: grid;
+    place-items: center;
+    width: 32vw;
+    grid-template-rows: 4vh ;
+    grid-template-columns: 30vw 2vw;    
+}
+
+#form-reset{
+    width: 2vw;
+    display: none;
+    cursor: pointer;
+    opacity: 0.25;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05);
+}
+
 body #search-bar {
-    display: block;
-    margin: 3em;
-    padding: .6em 6em .5em 2em;
+    display: inline-block;
+    padding: .6em 2em .5em 2em;
     border: 1px solid rgb(211, 210, 210);
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
     border-radius: 15vw;
-    color: grey;
-    text-align: left;
+    color: rgb(187, 187, 187);
+    text-align: center;
     font-size: 1.4vw;
+}
+
+body #search-bar::placeholder {
+    opacity: 0.5;
+    text-align: center;
 }
 
 #search-bar:focus {
     outline: 1px solid rgb(181, 181, 181);
     transition: all 250ms ease;
+    color: black;
 }
 
 .product-table {
@@ -69,7 +101,7 @@ body #search-bar {
 .product-table-item,
 .product-table-head {
     display: grid;
-    grid-template-columns: 30% repeat(5, 1fr);
+    grid-template-columns: 30vw repeat(5, 1fr);
 }
 
 .product-table-head div,
@@ -86,8 +118,15 @@ body #search-bar {
 }
 
 .product-table-container > div > div:nth-child(1) h3{
-    margin-left: 1em;
+    margin-left: 2vw;
+    text-align: left;
     white-space: nowrap;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: auto;
+    overflow-x: hidden;
+    
+   
 }
 
 /* fancy stuff */
@@ -214,7 +253,7 @@ body #search-bar {
     opacity: 0.5;
     border-radius: 1vw;
     padding: 0 2vw 0 2vw;
-    margin-bottom: 2vh;
+    margin-top: 2vh;
     user-select: none;
     
 }
@@ -273,7 +312,7 @@ body #search-bar {
 .product-table-head > div:nth-child(7){
     display: none;
 }
-
+}
 
 
 /* МОБИЛКА */
@@ -287,6 +326,7 @@ body #search-bar {
         width: 100%;
         font-family: 'roboto';    
         text-align: center;
+        
 
     }
     
@@ -318,24 +358,45 @@ body #search-bar {
         color: transparent;
         font-size: 10vw;
 
-    }
+    }   
+
+    
+.search-container {
+    margin: auto;
+    display: grid;
+    place-items: center;
+    width: 80vw;
+    grid-template-rows: 10vh ;
+    grid-template-columns: 20fr 1fr;    
+}
+
+
     
     body #search-bar {
-        display: block;
-        padding: .6em 6.2em .5em 4.2em;
+        display: inline-block;
+        width: 100%;
+        padding: .6em 0em .5em 0em;
         border: 1px solid rgb(211, 210, 210);
         box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
         border-radius: 1vw;
         color: grey;
-        text-align: left;
+        text-align: center;
         font-size: 4vw;
-        margin: 0;
-        margin-bottom: 1em;
     }
     
     #search-bar:focus {
         outline: 1px solid rgb(181, 181, 181);
         transition: all 250ms ease;
+    }
+
+
+    #form-reset{
+        display: none;
+        cursor: pointer;
+        opacity: 0.25;
+        margin-left: 3vw;
+        width: 6vw;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05);
     }
     
     .product-table {
@@ -349,7 +410,7 @@ body #search-bar {
     .product-table-item,
     .product-table-head {
         display: grid;
-        grid-template-columns: 3fr 1fr repeat(4, 1fr);
+        grid-template-columns: 40vw 1fr repeat(4, 1fr);
     }
     
     .product-table-head div,
@@ -363,12 +424,18 @@ body #search-bar {
     }
     
     .product-table-container > div > div:nth-child(1){
-        display: inline;
+        display: inline-block;
+        outline: 1ps solid red; 
+
     }
     
     .product-table-container > div > div:nth-child(1) h3{
         text-align: left;
-        white-space: nowrap;
+        width: 35vw;
+        text-overflow: ellipsis;
+        overflow: auto;
+        overflow-x: hidden;
+        
     }
     
     /* fancy stuff */
@@ -377,6 +444,7 @@ body #search-bar {
         cursor: pointer;
         text-decoration:underline rgba(193, 193, 193, 0.307);   
     }
+    
     
     .product-table-head div:nth-child(2):hover {
         background-color: #f55457;
@@ -487,31 +555,34 @@ body #search-bar {
     /* подкраска ги */
     
     #gi-highlight {
-        transform: scale(2.5);
         display: grid;
-        white-space: nowrap;
-        height: 3vw;
         place-items: center;
-        grid-template-columns: 1vw 7.5vw;
-        background: none;
-        opacity: 0.5;
+        width: 20vw;
+        margin: auto;
+        grid-template-columns: 1fr 10fr;
+        opacity: 0.65;
         border-radius: 1vw;
         padding: 0 2vw 0 2vw;
         margin-bottom: 2vh;
+        margin-top: 2vh;
         user-select: none;
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
+        
         
     }
     
     #gi-highlight p {
         background: none;
-        font-size: 1vw;
-        cursor: pointer;   
+        float: right;
+        font-size: 2vw;
+        cursor: pointer; 
     }
     
     #gi-highlight img {
         cursor: pointer;
-        width: 1.5vw;
-        height: 1.5vw;
+        float: left;
+        width: 2vw;
+        height: 2vw;
     }
     
     #gi-highlight:hover {

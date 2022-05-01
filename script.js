@@ -41,6 +41,16 @@ function rebuildTable () {
     }
         
 }
+
+let isResetBtnVisible = false
+
+function formReset()  {
+    rebuildTable()
+    document.getElementById('form-reset').style.display = 'none'
+    document.getElementById("search-bar").value = '';
+}
+
+
 let isGiColored = false
 
 function colorGi() {
@@ -94,9 +104,9 @@ function sort(parameter) {
         let importantVar
         importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[0] + '"]')
         for (let qry = 0; qry < importantVar.length; qry++){           
-            importantVar[qry].style.display = 'none'
+
             document.getElementById('product-table-container').appendChild(importantVar[qry])
-            importantVar[qry].style.display = 'grid'
+
 
              
         }        
@@ -124,9 +134,9 @@ function reSort(parameter) {
     for (let i = 0; i = newArray.length; i++){
         let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[newArray.length - 1] + '"]')
         for (let qry = 0; qry < importantVar.length; qry++){           
-            importantVar[qry].style.display = 'none'    
+  
             document.getElementById('product-table-container').appendChild(importantVar[qry])
-            importantVar[qry].style.display = 'grid'            
+          
         }        
         newArray.pop()
     }
@@ -135,7 +145,7 @@ function reSort(parameter) {
 document.addEventListener("DOMContentLoaded", function(event){
 
 rebuildTable ()
-
+document.getElementById("search-bar").focus()
 // поиск по тексту
 
 let searchArray = []
@@ -143,6 +153,11 @@ let input = document.getElementById('search-bar')
 input.addEventListener('input', updateValue)
 
 function updateValue(e) {
+    if (e.target.value.length != 0) {
+        document.getElementById('form-reset').style.display = 'inline-block'
+    }   else {
+        document.getElementById('form-reset').style.display = 'none'
+    }
     let searchStr = e.target.value.toLowerCase() 
     searchArray = []  
     let qi = [document.querySelectorAll('[data-name]').length]
@@ -160,26 +175,9 @@ function updateValue(e) {
 
             for (let i = 0 ; i< searchArray.length; i++) {
                 document.getElementById(searchArray[i]).style.display = 'grid'
-            }
-                    
-    
-    
-        
+            }   
     }
-    // for(let i = 0; i < searchArray ; i++) {
-        // document.querySelectorAll('[data-name]')[i].dataset.name
-    // }
-    // for (let i = 0; i < searchArray.length ; i++){
-    //     console.log(searchArray)
-// }
-
-
-
-
-
-}      
-    
-// подцветка ГИ
+} 
 
 
 
