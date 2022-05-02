@@ -13,7 +13,7 @@ function rebuildTable () {
         let carb = list[Object.keys(list)[i]].carb
         let prot = list[Object.keys(list)[i]].prot
         let fat = list[Object.keys(list)[i]].fat
-        let vita = list[Object.keys(list)[i]].vita
+        // let vita = list[Object.keys(list)[i]].vita
 
         document.getElementById('item' + id).dataset.name = name.toLowerCase()
         document.getElementById('item' + id).dataset.gindex = gindex
@@ -21,9 +21,9 @@ function rebuildTable () {
         document.getElementById('item' + id).dataset.carb = carb
         document.getElementById('item' + id).dataset.prot = prot
         document.getElementById('item' + id).dataset.fat = fat
-        document.getElementById('item' + id).dataset.vita = vita
+        // document.getElementById('item' + id).dataset.vita = vita
 
-        let productProperties = [name, gindex, calo, carb, prot, fat, vita]
+        let productProperties = [name, gindex, calo, carb, prot, fat]
 
             for (let x = 0; x < 7; x++ ){
                 itemValue = productProperties[x]
