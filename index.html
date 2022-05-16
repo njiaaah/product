@@ -17,14 +17,16 @@
 </head>
 
 <body>
-    <h1>ПРОДУКТЫЧ</h1>
+    <h1 id="top">ПРОДУКТЫЧ</h1>
+
+    <a href="#top" id='back-to-top'>↑</a>
 
     <div class="search-container"><input type="form" id="search-bar" placeholder="Имя продукта, например"  focus><img id="form-reset" onclick="formReset()" src="resetform.png" alt="очистить"></div>
     <div onclick="colorGi()" id="gi-highlight" ><img src="palett.png" alt="Подкраска категорий ГИ"><p>Категории ГИ</p></div>
     <div class="product-table">
         
         <div class="product-table-head">
-            <div id="name">Название</div>
+            <div id="name"   onclick="sortName()">Название</div>
             <div id="gindex" onclick="sort('gindex')">ГИ</div>
             <div id="calo"   onclick="sort('calo')">Калории</div>
             <div id="carb"   onclick="sort('carb')">Углеводы</div>
@@ -43,7 +45,9 @@
 
 
 
-
+    <footer>
+        <a href="https://t.me/njiah1"><img src="tg.gif" alt="telegram"></a>
+    </footer>
 
     <script type="text/javascript" src="list.js" defer></script>
     <script type="text/javascript" src="script.js" defer></script>

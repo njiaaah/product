@@ -53,6 +53,7 @@ function formReset()  {
 
 let isGiColored = false
 
+
 function colorGi() {
     if (!isGiColored) {
             for (let i = 0; i < Object.keys(list).length; i++) {
@@ -79,13 +80,14 @@ function colorGi() {
         
     }
 
+     //   сортировка  //
 
 function sort(parameter) {
     let newArray = []
 
 // сброс кнопок сортировки
 
-    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    let resetArray = ['name','gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
@@ -95,20 +97,17 @@ function sort(parameter) {
 //сортировка  
 
     document.getElementById(parameter).setAttribute("onclick","reSort('" + parameter + "')")
+
     for (let i = 0; i < Object.keys(list).length; i++) {
         newArray.push(list[Object.keys(list)[i]][parameter])    
     }
-        newArray.sort(function(a, b) { return a - b } )
-       
+        newArray.sort(function(a, b) { return a - b } )     
     for (let i = 0; i = newArray.length; i++){
         let importantVar
         importantVar = document.getElementById('product-table-container').querySelectorAll('[data-'+parameter+'="'+ newArray[0] + '"]')
         for (let qry = 0; qry < importantVar.length; qry++){           
 
-            document.getElementById('product-table-container').appendChild(importantVar[qry])
-
-
-             
+            document.getElementById('product-table-container').appendChild(importantVar[qry])             
         }        
         newArray.shift()
     }
@@ -117,7 +116,7 @@ function sort(parameter) {
 function reSort(parameter) {
 
     let newArray = []
-    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    let resetArray = ['name','gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
@@ -142,42 +141,91 @@ function reSort(parameter) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event){
+// сортировка по имени
 
-rebuildTable ()
-document.getElementById("search-bar").focus()
+let isNameSorted = false
+function sortName() {
+    
+    let newArray = []
+
+    for (let i = 0; i < Object.keys(list).length; i++) {
+        newArray.push(list[Object.keys(list)[i]]['name'].toLowerCase())    
+    }
+    newArray.sort()
+    
+    
+    if (isNameSorted === false) {
+
+            isNameSorted = true
+            for (i = 0 ; i = newArray.length ; i ) {   
+                let importantVar = document.querySelectorAll('[data-name="'+ newArray[0] + '"]') 
+                document.getElementById('product-table-container').appendChild(importantVar[0])
+                newArray.shift()
+            }  
+        } else {
+            isNameSorted = false
+            for (i = 0 ; i = newArray.length ; i++ ) {   
+                let importantVar = document.querySelectorAll('[data-name="'+ newArray[newArray.length - 1] + '"]')
+                document.getElementById('product-table-container').appendChild(importantVar[0])
+                newArray.pop()
+            }  
+        }          
+        
+}
+
+// наверх-баттон
+
+window.addEventListener('scroll', function(){
+  
+    let y = this.scrollY
+    let tButton = document.getElementById('back-to-top')
+
+    if (y > 500) {
+        tButton.classList.add('btt-show')
+        
+    } else {
+        tButton.classList.remove('btt-show')
+    }
+})
+
+document.addEventListener("DOMContentLoaded", function(event){
+    rebuildTable ()
+    document.getElementById("search-bar").focus()
+
+
 // поиск по тексту
 
-let searchArray = []
-let input = document.getElementById('search-bar')
-input.addEventListener('input', updateValue)
 
-function updateValue(e) {
-    if (e.target.value.length != 0) {
-        document.getElementById('form-reset').style.display = 'inline-block'
-    }   else {
-        document.getElementById('form-reset').style.display = 'none'
-    }
-    let searchStr = e.target.value.toLowerCase() 
-    searchArray = []  
-    let qi = [document.querySelectorAll('[data-name]').length]
+    let searchArray = []
+    let input = document.getElementById('search-bar')
+    input.addEventListener('input', updateValue)
+
+    function updateValue(e) {
+        if (e.target.value.length != 0) {
+            document.getElementById('form-reset').style.display = 'inline-block'
+        }   else {
+            document.getElementById('form-reset').style.display = 'none'
+        }
+        let searchStr = e.target.value.toLowerCase() 
+        searchArray = []  
+        let qi = [document.querySelectorAll('[data-name]').length]
 
 
-        let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-name]')
-        for (let qry = 0; qry < importantVar.length; qry++){           
-            importantVar[qry].style.display = 'none'              
-        }   
-
-        for (let i = 0 ; i < qi ; i++ ){
-            if ( (document.querySelectorAll('[data-name]')[i].dataset.name.includes(searchStr))) {
-                searchArray.push(document.querySelectorAll('[data-name]')[i].id)
-            }
-
-            for (let i = 0 ; i< searchArray.length; i++) {
-                document.getElementById(searchArray[i]).style.display = 'grid'
+            let importantVar = document.getElementById('product-table-container').querySelectorAll('[data-name]')
+            for (let qry = 0; qry < importantVar.length; qry++){           
+                importantVar[qry].style.display = 'none'              
             }   
-    }
-} 
+
+            for (let i = 0 ; i < qi ; i++ ){
+                if ( (document.querySelectorAll('[data-name]')[i].dataset.name.includes(searchStr))) {
+                    searchArray.push(document.querySelectorAll('[data-name]')[i].id)
+                }
+
+                for (let i = 0 ; i< searchArray.length; i++) {
+                    document.getElementById(searchArray[i]).style.display = 'grid'
+                }   
+        }
+    } 
 
 
 

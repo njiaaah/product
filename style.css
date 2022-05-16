@@ -7,10 +7,13 @@
     overflow: hidden;
     }
 
-@media (min-width: 55.01em) {
+html {
+    scroll-behavior: smooth;
+}
 
 
 body {
+    
     overflow-x: hidden;
     background-color: rgb(237, 237, 237);
     color: var(--main-color);
@@ -19,6 +22,7 @@ body {
     display: grid;
     place-items: center;
     gap: 2vh;
+    
  
 }
 
@@ -94,7 +98,6 @@ body #search-bar::placeholder {
     margin: auto;
     width:  min(90%,1100px);
     background-color: rgb(240, 240, 240);
-    border-radius: 1vw;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);    
 }
 
@@ -131,17 +134,23 @@ body #search-bar::placeholder {
 
 /* fancy stuff */
 
-.product-table-head div:nth-child(n+2) {
+
+.product-table-head div:nth-child(n) {
     cursor: pointer;
     text-decoration:underline rgba(193, 193, 193, 0.307);   
 }
 
-.product-table-head div:nth-child(2):hover {
+.product-table-head div:nth-child(1):hover {
     background-color: #f55457;
+    border-top-left-radius: 1vw;
+}
+
+.product-table-head div:nth-child(2):hover {
+    background-color: #f5863c;
 }
 
 .product-table-head div:nth-child(3):hover {
-    background-color: #f5863c;
+    background-color: #e3bf2d;
     padding-bottom: 0.5vw;  
 }
 
@@ -154,7 +163,7 @@ body #search-bar::placeholder {
 }
 
 .product-table-head div:nth-child(4):hover {
-    background-color: #e3bf2d;
+    background-color: #4ce558;
     padding-bottom: 0.5vw; 
 }
 
@@ -167,7 +176,7 @@ body #search-bar::placeholder {
 }
 
 .product-table-head div:nth-child(5):hover {
-    background-color: #4ce558;
+    background-color: #49b6ff;
 }
 
 .product-table-head div:nth-child(5):hover::after {
@@ -179,7 +188,7 @@ body #search-bar::placeholder {
 }
 
 .product-table-head div:nth-child(6):hover {
-    background-color: #49b6ff;
+    background-color: #ad81ff;
     border-top-right-radius: 1vw;   
 }
 
@@ -197,7 +206,7 @@ body #search-bar::placeholder {
     border-top-right-radius: 1vw;    
 }
 
-.product-table-head div:nth-child(n+2):hover {
+.product-table-head div:nth-child(n+1):hover {
     text-decoration: none;
     color: aliceblue;
     transition: all 250ms ease; 
@@ -312,7 +321,33 @@ body #search-bar::placeholder {
 .product-table-head > div:nth-child(7){
     display: none;
 }
+
+#back-to-top {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px 15px 15px;
+    font-size: 200%;
+    background-color: #333;
+    transform: translateX(200px);
+    border-radius: 25em;
+    transition: all 250ms ease-in-out;
 }
+
+.btt-show {
+    transform: translateX(0) !important ;
+    transition: all 250ms ease-in-out;
+}
+
+footer {
+    height: 100px;
+    display: grid;
+    place-items: center;
+}
+
+
 
 
 /* МОБИЛКА */
@@ -403,7 +438,6 @@ body #search-bar::placeholder {
 
         width:  100%;
         background-color: rgb(240, 240, 240);
-        border-radius: 1vw;
         box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);    
     }
     
@@ -441,73 +475,6 @@ body #search-bar::placeholder {
     
     /* fancy stuff */
     
-    .product-table-head div:nth-child(n+2) {
-        cursor: pointer;
-        text-decoration:underline rgba(193, 193, 193, 0.307);   
-    }
-    
-    
-    .product-table-head div:nth-child(2):hover {
-        background-color: #f55457;
-    }
-    
-    .product-table-head div:nth-child(3):hover {
-        background-color: #f5863c;
-        padding-bottom: 0.5vw;  
-    }
-    
-    .product-table-head div:nth-child(3):hover::after {
-        content: 'ККал на 100г';
-        white-space: nowrap;
-        font-size: .75vh;
-        position: absolute;
-        margin-top: 35px;
-        opacity: 0.65;
-    }
-    
-    .product-table-head div:nth-child(4):hover {
-        background-color: #e3bf2d;
-        padding-bottom: 0.5vw; 
-    }
-    
-    .product-table-head div:nth-child(4):hover::after {
-        content: 'г на 100г';
-        font-size: 1vh;
-        position: absolute;
-        margin-top: 35px;
-        opacity: 0.65;
-    }
-    
-    .product-table-head div:nth-child(5):hover {
-        background-color: #4ce558;
-    }
-    
-    .product-table-head div:nth-child(5):hover::after {
-        content: 'г на 100г';
-        font-size: 1vh;
-        position: absolute;
-        margin-top: 35px;
-        opacity: 0.65;
-    }
-    
-    .product-table-head div:nth-child(6):hover {
-        background-color: #49b6ff;
-        border-top-right-radius: 1vw;   
-    }
-    
-    .product-table-head div:nth-child(6):hover::after {
-        content: 'г на 100г';
-        font-size: 1vh;
-        position: absolute;
-        margin-top: 35px;
-        opacity: 0.65;
-        
-    }
-    
-    .product-table-head div:nth-child(7):hover {    
-        background-color: #ad81ff; 
-        border-top-right-radius: 1vw;    
-    }
     
     .product-table-head div:nth-child(n+2):hover {
         text-decoration: none;
@@ -523,9 +490,8 @@ body #search-bar::placeholder {
     }
     
     .product-table-head {
+        border-radius: 0;
         background-color: #333333;
-        border-top-left-radius: 1vw;
-        border-top-right-radius: 1vw;
         box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
         height: 6vh;
     }
@@ -562,7 +528,6 @@ body #search-bar::placeholder {
         margin: auto;
         grid-template-columns: 1fr 10fr;
         opacity: 0.65;
-        border-radius: 1vw;
         padding: 0 2vw 0 2vw;
         margin-bottom: 2vh;
         margin-top: 2vh;
