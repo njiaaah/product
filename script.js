@@ -87,7 +87,7 @@ function sort(parameter) {
 
 // сброс кнопок сортировки
 
-    let resetArray = ['name','gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
@@ -116,7 +116,7 @@ function sort(parameter) {
 function reSort(parameter) {
 
     let newArray = []
-    let resetArray = ['name','gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
