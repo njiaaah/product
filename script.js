@@ -227,7 +227,34 @@ document.addEventListener("DOMContentLoaded", function(event){
         }
     } 
 
+    window.addEventListener('scroll', function(){
+
+        let headOffset = document.getElementById('table-head').getBoundingClientRect()
+
+        let y = this.scrollY
+        console.log(y)
+        if (y > 300){
+            document.getElementById('table-head').classList.add('sticky-head')
+            document.getElementById('table-head').classList.remove('sticky-head-hidden')
+
+        } else {
+            document.getElementById('table-head').classList.remove('sticky-head')
+            document.getElementById('table-head').classList.add('sticky-head-hidden')
+
+        }
+
+        // if (headOffset < 300){
+        //     document.getElementById('table-head').classList.add('sticky-head')
+        //     document.getElementById('table-head').classList.remove('sticky-head-hidden')
+
+        // } else {
+        //     document.getElementById('table-head').classList.remove('sticky-head')
+        //     document.getElementById('table-head').classList.add('sticky-head-hidden')
+
+        // }
+    })
 
 
-});
+
+})
 
