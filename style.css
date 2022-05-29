@@ -10,7 +10,7 @@ html {
 
 body {
     
-
+    overflow-x: hidden;
     background-color: rgb(237, 237, 237);
     color: var(--main-color);
     margin: 0;
