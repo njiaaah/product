@@ -243,5 +243,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 
         }
     })
+
+    sortName()
 })
 
