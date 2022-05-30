@@ -2,14 +2,12 @@
     --main-color: rgb(70, 70, 70);
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    
+    overflow-y: scroll;
     overflow-x: hidden;
     background-color: rgb(237, 237, 237);
     color: var(--main-color);
@@ -17,17 +15,13 @@ body {
     font-family: 'roboto';    
     display: grid;
     place-items: center;
-    gap: 2vh;
-    
- 
+    grid-template-rows: 5vh 12vh 7vh 1fr 15vh 1vh
 }
-
-
 
 p, h3, button,div {
     background: none; 
     border: 0;
-    font-size: max(20px,1vw);
+    font-size: max(20px);
     font-weight: 400;
     color: var(--main-color);
 }
@@ -46,37 +40,37 @@ h1 {
         rgba(95, 21, 242, 1) 84%,
         rgba(186, 12, 248, 1) 100%
     );
+    padding-top: 25px;
     -webkit-background-clip: text;
     color: transparent;
-    padding: 1vw;
-}
-
-.search-container {
-    
-    display: grid;
-    place-items: center;
-    width: 32vw;
-    grid-template-rows: 4vh ;
-    grid-template-columns: 30vw 2vw;    
 }
 
 #form-reset{
-    width: 2vw;
+    position: absolute;
+    transform: translate(-150%, 65%);
+    width: 20px;
     display: none;
     cursor: pointer;
     opacity: 0.25;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05);
+    transition: all 250ms ease-in-out;
 }
 
 body #search-bar {
+    display: grid;
+    place-items: center;
+    width: 30vw;
+    grid-template-rows: 4vh ; 
+    grid-template-columns: 30vw 0px;
     display: inline-block;
     padding: .6em 2em .5em 2em;
     border: 1px solid rgb(211, 210, 210);
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
-    border-radius: 15vw;
+    border-radius: 8px;
     color: rgb(187, 187, 187);
     text-align: center;
-    font-size: 1.4vw;
+    font-size: 2vh;
+    width: 200px;
 }
 
 body #search-bar::placeholder {
@@ -101,8 +95,50 @@ body #search-bar::placeholder {
 .product-table-item,
 .product-table-head {
     display: grid;
-    grid-template-columns: 30vw repeat(5, 1fr);
+    grid-template-columns: 4fr repeat(5, 1fr);
 }
+
+/* sticky header */
+
+.sticky-head {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    top: 0;
+    position: sticky;
+}
+
+.sticky-head::after {
+    content: "";
+    width: 500%;
+    height: 6.2vh;
+    background-color: #333;
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: -6.1vh;
+    transform: translate(-50vw, 6vh);
+    transition: all 300ms ease-out;
+}
+
+.sticky-head-hidden {
+    top: 0;
+    position: sticky;
+}
+
+.sticky-head-hidden::after {
+    content: "";
+    width: 200%;
+    height: 6vh;
+    background-color: #333;
+    position: absolute;
+    z-index: -1;
+    transform: translate(-17vw, 0vh);
+    opacity: 0;
+
+    transition: all 100ms ease-out;
+}
+
+/* */
 
 .product-table-head div,
 .product-table-item div,
@@ -111,6 +147,12 @@ body #search-bar::placeholder {
     display: grid;
     place-items: center;
     user-select: none;
+}
+
+.product-table-head div:nth-child(1) {
+    place-items: center start;
+    padding-left: 2vw;
+
 }
 
 .product-table-container > div > div:nth-child(1){
@@ -125,12 +167,8 @@ body #search-bar::placeholder {
     text-overflow: ellipsis;
     overflow: auto;
     overflow-x: hidden;
-    
    
 }
-
-/* fancy stuff */
-
 
 .product-table-head div:nth-child(n) {
     cursor: pointer;
@@ -139,7 +177,7 @@ body #search-bar::placeholder {
 
 .product-table-head div:nth-child(1):hover {
     background-color: #f55457;
-    border-top-left-radius: 1vw;
+    border-top-left-radius: 5px;
 }
 
 .product-table-head div:nth-child(2):hover {
@@ -156,7 +194,6 @@ body #search-bar::placeholder {
     font-size: 1.2vh;
     position: absolute;
     margin-top: 35px;
-    opacity: 0.65;
 }
 
 .product-table-head div:nth-child(4):hover {
@@ -186,7 +223,7 @@ body #search-bar::placeholder {
 
 .product-table-head div:nth-child(6):hover {
     background-color: #ad81ff;
-    border-top-right-radius: 1vw;   
+    border-top-right-radius: 5px;   
 }
 
 .product-table-head div:nth-child(6):hover::after {
@@ -197,19 +234,23 @@ body #search-bar::placeholder {
     opacity: 0.65;
     
 }
-
-.product-table-head div:nth-child(7):hover {    
-    background-color: #ad81ff; 
-    border-top-right-radius: 1vw;    
+.product-table-head div:nth-child(n):hover::after {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
-.product-table-head div:nth-child(n+1):hover {
+.product-table-head div:nth-child(n):hover {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.product-table-head div:nth-child(n):hover {
     text-decoration: none;
     color: aliceblue;
     transition: all 250ms ease; 
     font-size: 1em;
     box-shadow: 0px 3px 16px 5px rgba(0, 0, 0, 0.1);
-    transform: scale(1.05);
+    transform: scale(1.02,1.12);
 }
 
 .product-table-container > div:nth-child(2n+1){
@@ -218,8 +259,8 @@ body #search-bar::placeholder {
 
 .product-table-head {
     background-color: #333333;
-    border-top-left-radius: 1vw;
-    border-top-right-radius: 1vw;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
     height: 6vh;
 }
@@ -234,7 +275,6 @@ body #search-bar::placeholder {
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
     transition: all 150ms ease;
 }
-
 
 .slideOut {
     opacity: 0;
@@ -251,51 +291,45 @@ body #search-bar::placeholder {
 
 #gi-highlight {
     display: grid;
-    white-space: nowrap;
-    height: 3vw;
-    place-items: center;
-    grid-template-columns: 1vw 7.5vw;
-    background: none;
+    place-items: center start;
     opacity: 0.5;
-    border-radius: 1vw;
-    padding: 0 2vw 0 2vw;
-    margin-top: 2vh;
     user-select: none;
+    padding: 5px 25px 0px 25px;
+    border-radius: 5px;
     
 }
 
 #gi-highlight p {
     background: none;
-    font-size: 1vw;
+    font-size: 14px;
     cursor: pointer;
-
     text-decoration: underline 1px rgba(128, 128, 128, 0.361);
-
 }
 
 #gi-highlight img {
     cursor: pointer;
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 20px;
+    height: 20px;
 }
 
-#gi-highlight:hover {
+.gi-highlight:hover {
   opacity: 1;
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
   transition: all 250ms ease;
 }
 
 .giHighlightActive {
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-    transition: all 250ms ease;
-    color: rgb(168, 255, 87);
-    color: linear-gradient(90deg, rgba(119,249,42,1) 11%, rgba(255,190,49,1) 35%, rgba(255,190,49,1) 65%, rgba(255,30,30,1) 94%, rgba(255,30,30,1) 100%);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
+    transition: all 550ms ease;
+   
+}
+
+.giHighlightActive p {
+    
 }
 
 .giHighlightActive:hover {
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0); 
-    transition: all 250ms ease;
+    
 }
 
 .lowGi > div:nth-child(2){
@@ -339,295 +373,89 @@ body #search-bar::placeholder {
 }
 
 footer {
-    height: 100px;
+    margin-top: 150px;
+    margin-bottom: 150px;
     display: grid;
     place-items: center;
 }
-
-.sticky-head {
-    top: 0;
-    position: sticky;
+footer p {
+    
+    text-align: center;
+    line-height: 135%;
+    font-size: 12px;
+    opacity: 0.7;
 }
 
-.sticky-head::after {
-    content: "";
-    width: 2500px;
-    height: 6.1vh;
-    background-color: #333;
-    position: absolute;
-    left: -500px;
-    z-index: -1;
-    opacity: 1;
-    top: -6.05vh;
-    transform: translateY(6vh);
-    transition: all 300ms ease-out;
+footer img {
+    width: 32px;
+    height: 32px;
+    filter: saturate(0);
+    transition: all 500ms ease;
 }
 
-.sticky-head-hidden {
-    top: 0;
-    position: sticky;
+footer img:hover {
+    filter: saturate(1);
+    transform: scale(1.35);
+    transition: all 250ms ease;
+
 }
-
-.sticky-head-hidden::after {
-    content: "";
-    width: 2500px;
-    height: 6vh;
-    background-color: #333;
-    position: absolute;
-    left: -500px;
-    z-index: -1;
-
-    opacity: 0;
-
-    transition: all 100ms ease-out;
-}
-
-
-
 
 /* МОБИЛКА */
 
-
 @media (max-width: 55em) {
-    body {
-        background-color: rgb(237, 237, 237);
-        color: var(--main-color);
-        margin: 0;
-        width: 100%;
-        font-family: 'roboto';    
-        text-align: center;
-        
 
+    body {
+        grid-template-rows: 10vh 8vh 8vh 1fr 15vh 1vh
     }
-    
+       
     p, h3, button,div {
-        background: none; 
-        border: 0;
         font-size: 2.5vw;
-        font-weight: 400;
-        color: var(--main-color);
-        
+        font-weight: 400;   
     }
     
     h1 {
-        font-family: 'Press Start 2P';
-        display: inline-block;
-        background-image: linear-gradient(
-            90deg,
-            rgba(255, 0, 0, 1) 0%,
-            rgba(255, 154, 0, 1) 12%,
-            rgba(208, 222, 33, 1) 24%,
-            rgba(79, 220, 74, 1) 36%,
-            rgba(63, 218, 216, 1) 48%,
-            rgba(47, 201, 226, 1) 60%,
-            rgba(28, 127, 238, 1) 72%,
-            rgba(95, 21, 242, 1) 84%,
-            rgba(186, 12, 248, 1) 100%
-        );
-        -webkit-background-clip: text;
-        color: transparent;
         font-size: 10vw;
+    }   
+   
+    .search-container {
+        display: grid;
+        height: 10vh;
+        grid-template-columns: 1fr 0;
+        place-items: center;
+        margin-top: 5vh;
+        margin-bottom: 1vh;
+    }
 
+    #form-reset {   
+        opacity: 0.25;
+        width: 40px;
+        position: relative;
+        transform: translate(-60% , 0);
+        transition: all 250ms ease-in-out;
+    }
+   
+    body #search-bar {
+        width: 100%;
+        padding: .4em .2em .3em .2em;
+        font-size: 3vh;
     }   
 
-    
-.search-container {
-    margin: auto;
-    display: grid;
-    place-items: center;
-    width: 80vw;
-    grid-template-rows: 10vh ;
-    grid-template-columns: 20fr 1fr;    
-}
-
-
-    
-    body #search-bar {
-        display: inline-block;
-        width: 100%;
-        padding: .6em 0em .5em 0em;
-        border: 1px solid rgb(211, 210, 210);
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05); 
-        border-radius: 1vw;
-        color: grey;
-        text-align: center;
-        font-size: 4vw;
-    }
-    
-    #search-bar:focus {
-        outline: 1px solid rgb(181, 181, 181);
-        transition: all 250ms ease;
-    }
-
-
-    #form-reset{
-        display: none;
-        cursor: pointer;
-        opacity: 0.25;
-        margin-left: 3vw;
-        width: 6vw;
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.05);
-    }
-    
     .product-table {
-
-        width:  100%;
-        background-color: rgb(240, 240, 240);
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
-        
+        width:  100%;       
     }
     
     .product-table-item,
     .product-table-head {
-        display: grid;
-        grid-template-columns: 40vw 1fr repeat(4, 1fr);
+        grid-template-columns: 30vw 1fr repeat(4, 1fr);
         
-    }
-    
-    .product-table-head div,
-    .product-table-item div,
-    .product-table-container div {
-        width: 100%;
-        display: grid;
-        place-items: center;
-        user-select: none;
-        text-overflow: ellipsis;
-    }
-    
-    .product-table-container > div > div:nth-child(1){
-        display: inline-block;
-        outline: 1ps solid red; 
-
-    }
-    
-    .product-table-container > div > div:nth-child(1) h3{
-        text-align: left;
-        width: 35vw;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: auto;
-        overflow-x: hidden;
-        
-    }
-    
-    /* fancy stuff */
-    
-    
-    .product-table-head div:nth-child(n+2):hover {
-        text-decoration: none;
-        color: aliceblue;
-        transition: all 250ms ease; 
-        font-size: 1em;
-        box-shadow: 0px 3px 16px 5px rgba(0, 0, 0, 0.1);
-        transform: scale(1.1);
-    }
-    
-    .product-table-container > div:nth-child(2n+1){
-        background-color: rgba(54, 115, 94, 0.03);
     }
     
     .product-table-head {
         border-radius: 0;
-        background-color: #333333;
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
-        height: 6vh;
     }
-    
-    .product-table-head div {
-        color: rgb(169, 171, 173);
-    }
-    
-    .product-table-container > div:hover{
-        background-color: rgb(221, 221, 221);
-        color: white;
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
-        transition: all 150ms ease;
-    }
-    
-    
-    .slideOut {
-        opacity: 0;
-        transition: all 250ms ease-in-out;
-    }
-    
-    .slideIn {
-        opacity: 1;
-        transition: all 250ms ease-in-out;
-    }
-    
-    
-    /* подкраска ги */
     
     #gi-highlight {
-        display: grid;
-        place-items: center;
-        width: 20vw;
-        margin: auto;
-        grid-template-columns: 1fr 10fr;
-        opacity: 0.65;
-        padding: 0 2vw 0 2vw;
-        margin-bottom: 2vh;
-        margin-top: 2vh;
-        user-select: none;
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
-        
-        
-    }
-    
-    #gi-highlight p {
-        background: none;
-        float: right;
-        font-size: 2vw;
-        cursor: pointer; 
-    }
-    
-    #gi-highlight img {
-        cursor: pointer;
-        float: left;
-        width: 2vw;
-        height: 2vw;
-    }
-    
-    #gi-highlight:hover {
-      opacity: 1;
-      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1); 
-      transition: all 250ms ease;
-    }
-    
-    .giHighlightActive {
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-        transition: all 250ms ease;
-        color: rgb(119,249,42);
-        color: linear-gradient(90deg, rgba(119,249,42,1) 11%, rgba(255,190,49,1) 35%, rgba(255,190,49,1) 65%, rgba(255,30,30,1) 94%, rgba(255,30,30,1) 100%);
-    }
-        
-    .giHighlightActive:hover {
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0); 
-        transition: all 250ms ease;
-    }
-    
-    
-    
-    .lowGi > div:nth-child(2){
-        background-color: #36fd46b8;
-    }
-    
-    .mediumGi > div:nth-child(2){
-        background-color: #ff8c2e8d;
-    }
-    
-    .highGi > div:nth-child(2){
-        background-color: #ff330079;
-    }
-    
-    .neutralGi > div:nth-child(2){
-        background: none;
-    }
-    
-    .product-table-container > div >div:nth-child(7),
-    .product-table-head > div:nth-child(7){
-        display: none;
+        margin-top: 2vh;     
     }
 }
 

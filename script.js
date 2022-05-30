@@ -48,6 +48,8 @@ function formReset()  {
     rebuildTable()
     document.getElementById('form-reset').style.display = 'none'
     document.getElementById("search-bar").value = '';
+    isNameSorted = !isNameSorted
+    sortName()
 }
 
 
@@ -58,14 +60,15 @@ function colorGi() {
     if (!isGiColored) {
             for (let i = 0; i < Object.keys(list).length; i++) {
                 let cDiv = document.getElementById('item' + i )
-                if (cDiv.dataset.gindex <= 55) {
+                if (cDiv.dataset.gindex <= 50) {
                     cDiv.classList.add("lowGi")
-                } else if (cDiv.dataset.gindex > 55 && cDiv.dataset.gindex <= 70) {
+                } else if (cDiv.dataset.gindex > 50 && cDiv.dataset.gindex <= 70) {
                     cDiv.classList.add("mediumGi") 
                 } else cDiv.classList.add("highGi")
             }
             isGiColored = true
             document.getElementById('gi-highlight').classList.add("giHighlightActive")
+            document.getElementById('gi-highlight').classList.remove("gi-highlight")
         } else {
             for (let i = 0; i < Object.keys(list).length; i++) {
                 let cDiv = document.getElementById('item' + i )
@@ -75,6 +78,7 @@ function colorGi() {
             }
             isGiColored = false
             document.getElementById('gi-highlight').classList.remove("giHighlightActive")
+            document.getElementById('gi-highlight').classList.add("gi-highlight")
         }
 
         
@@ -175,18 +179,7 @@ function sortName() {
 
 // наверх-баттон
 
-window.addEventListener('scroll', function(){
-  
-    let y = this.scrollY
-    let tButton = document.getElementById('back-to-top')
 
-    if (y > 500) {
-        tButton.classList.add('btt-show')
-        
-    } else {
-        tButton.classList.remove('btt-show')
-    }
-})
 
 document.addEventListener("DOMContentLoaded", function(event){
     rebuildTable ()
@@ -217,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function(event){
             }   
 
             for (let i = 0 ; i < qi ; i++ ){
-                if ( (document.querySelectorAll('[data-name]')[i].dataset.name.includes(searchStr))) {
+                if ((document.querySelectorAll('[data-name]')[i].dataset.name.includes(searchStr))) {
                     searchArray.push(document.querySelectorAll('[data-name]')[i].id)
                 }
 
@@ -227,23 +220,21 @@ document.addEventListener("DOMContentLoaded", function(event){
         }
     } 
 
+    let tButton = document.getElementById('back-to-top')
     window.addEventListener('scroll', function(){
-
-        let headOffset = document.getElementById('table-head').getBoundingClientRect()
 
         let y = this.scrollY
 
         if (y > 300){
             document.getElementById('table-head').classList.add('sticky-head')
             document.getElementById('table-head').classList.remove('sticky-head-hidden')
-
+            tButton.classList.add('btt-show')
         } else {
             document.getElementById('table-head').classList.remove('sticky-head')
             document.getElementById('table-head').classList.add('sticky-head-hidden')
-
+            tButton.classList.remove('btt-show')
         }
     })
-
     sortName()
 })
 

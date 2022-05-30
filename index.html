@@ -17,14 +17,13 @@
 </head>
 
 <body>
+
     <h1 id="top">ПРОДУКТЫЧ</h1>
-
     <a href="#top" id='back-to-top'>↑</a>
+    <div class="search-container"><input type="form" id="search-bar" placeholder="Поиск по названию"  focus><img id="form-reset" onclick="formReset()" src="resetform.png" alt="очистить"></div>
+    <div onclick="colorGi()" id="gi-highlight" ><p>Категории ГИ</p></div>
 
-    <div class="search-container"><input type="form" id="search-bar" placeholder="Имя продукта, например"  focus><img id="form-reset" onclick="formReset()" src="resetform.png" alt="очистить"></div>
-    <div onclick="colorGi()" id="gi-highlight" ><img src="palett.png" alt="Подкраска категорий ГИ"><p>Категории ГИ</p></div>
-    <div class="product-table">
-        
+    <div class="product-table">       
         <div class="product-table-head sticky-head-hidden" id="table-head">
             <div id="name"   onclick="sortName()">Название</div>
             <div id="gindex" onclick="sort('gindex')">ГИ</div>
@@ -34,20 +33,16 @@
             <div id="fat"    onclick="sort('fat')">Жиры</div>
             <div id="vita"   onclick="sort('vita')">Витамины</div>
         </div>
-
-        <div class="product-table-container" id="product-table-container">
-             
-        </div>
-
+        <div class="product-table-container" id="product-table-container"></div>
     </div>
-    
-    
-
-
 
     <footer>
+        <p>Таблица предназначеена для ознакомления чуть менее, чем полностью. <br>
+            Значения взяты из нескольких источников и усреднены.<br> Гликемический индейкс продукта меняется при термитечкой обработке. <br> По исправлениям пишите:</p>
         <a href="https://t.me/njiah1"><img src="tg.gif" alt="telegram"></a>
     </footer>
+
+    <div></div>
 
     <script type="text/javascript" src="list.js" defer></script>
     <script type="text/javascript" src="script.js" defer></script>
