@@ -151,8 +151,8 @@ body #search-bar::placeholder {
 
 .product-table-head div:nth-child(1) {
     place-items: center start;
-    padding-left: 2vw;
-
+    padding-left: 2.5vh;
+    width: calc(100% - 2vw);
 }
 
 .product-table-container > div > div:nth-child(1){
@@ -186,7 +186,7 @@ body #search-bar::placeholder {
 
 .product-table-head div:nth-child(3):hover {
     background-color: #e3bf2d;
-    padding-bottom: 0.5vw;  
+    padding-bottom: 0.5vw;
 }
 
 .product-table-head div:nth-child(3):hover::after {
@@ -250,7 +250,7 @@ body #search-bar::placeholder {
     transition: all 250ms ease; 
     font-size: 1em;
     box-shadow: 0px 3px 16px 5px rgba(0, 0, 0, 0.1);
-    transform: scale(1.02,1.12);
+    transform: scale(1.02,1.2);
 }
 
 .product-table-container > div:nth-child(2n+1){
@@ -322,14 +322,6 @@ body #search-bar::placeholder {
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1) inset;
     transition: all 550ms ease;
    
-}
-
-.giHighlightActive p {
-    
-}
-
-.giHighlightActive:hover {
-    
 }
 
 .lowGi > div:nth-child(2){
@@ -456,6 +448,21 @@ footer img:hover {
     
     #gi-highlight {
         margin-top: 2vh;     
+    }
+
+    .product-table-head div:nth-child(1) {
+        place-items: center start;
+        padding-left: 1.5vh;
+        width: calc(100% - 6vw);
+    }
+
+    .product-table-head div:nth-child(n):hover {
+        transform: scale(1.02,1.15);
+
+    }
+
+    .product-table-head div:nth-child(n)::after {
+       padding-bottom: .7vh;
     }
 }
 
