@@ -97,7 +97,7 @@ body #search-bar::placeholder {
 .product-table-item,
 .product-table-head {
     display: grid;
-    grid-template-columns: 4fr repeat(5, 1fr);
+    grid-template-columns: 3.8fr repeat(4, 1fr) 1.4fr;
 }
 
 /* sticky header */

@@ -23,7 +23,7 @@ function rebuildTable () {
         document.getElementById('item' + id).dataset.fat = fat
         // document.getElementById('item' + id).dataset.vita = vita
 
-        let productProperties = [name, gindex, calo, carb, prot, fat]
+        let productProperties = [name, gindex, calo, prot, fat, carb]
 
             for (let x = 0; x < 7; x++ ){
                 itemValue = productProperties[x]
@@ -91,7 +91,7 @@ function sort(parameter) {
 
 // сброс кнопок сортировки
 
-    let resetArray = ['gindex', 'calo', 'carb', 'prot', 'fat', 'vita']
+    let resetArray = ['gindex', 'calo', 'prot', 'fat', 'carb']
     for (let r = 0; r < resetArray.length;){
         let sortReset = resetArray[0]
         document.getElementById(sortReset).setAttribute("onclick","sort('" + sortReset + "')")
